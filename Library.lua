@@ -32,49 +32,37 @@ local Library = {
     DevicePlatform = nil,
     IsMobile = false,
     IsRobloxFocused = true,
-
     ScreenGui = nil,
-
     SearchText = "",
     Searching = false,
     LastSearchTab = nil,
-
     ActiveTab = nil,
     Tabs = {},
     DependencyBoxes = {},
-
     KeybindFrame = nil,
     KeybindContainer = nil,
     KeybindToggles = {},
-
     Notifications = {},
-
     ToggleKeybind = Enum.KeyCode.RightControl,
     TweenInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
     NotifyTweenInfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-
     Toggled = false,
     Unloaded = false,
-
     Labels = Labels,
     Buttons = Buttons,
     Toggles = Toggles,
     Options = Options,
-
     NotifySide = "Right",
     ShowCustomCursor = true,
     ForceCheckbox = false,
     ShowToggleFrameInKeybinds = true,
     NotifyOnError = false,
-
     CantDragForced = false,
-
     Signals = {},
     UnloadSignals = {},
-
     MinSize = Vector2.new(480, 360),
     DPIScale = 1,
-    CornerRadius = 4,
+    CornerRadius = 8,
 
     IsLightTheme = false,
     Scheme = {
@@ -250,9 +238,9 @@ local Templates = {
         IconSize = UDim2.fromOffset(30, 30),
         AutoShow = true,
         Center = true,
-        Resizable = true,
+        Resizable = false,
         SearchbarSize = UDim2.fromScale(1, 1),
-        CornerRadius = 4,
+        CornerRadius = 8,
         NotifySide = "Right",
         ShowCustomCursor = true,
         Font = Enum.Font.Code,
@@ -278,7 +266,7 @@ local Templates = {
         ClearTextOnFocus = true,
         Placeholder = "",
         AllowEmpty = true,
-        EmptyReset = "---",
+        EmptyReset = "",
 
         Callback = function() end,
         Changed = function() end,
