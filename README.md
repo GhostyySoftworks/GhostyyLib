@@ -1,4 +1,4 @@
-# Obsidian UI Library
+# Ghostyy UI Library
 
 ## Table of Contents
 
@@ -36,10 +36,10 @@
 
 ## Getting Started
 
-To use the Obsidian UI Library, you need to assign it to a variable:
+To use the Ghostyy UI Library, you need to assign it to a variable:
 
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostyySoftworks/GhostyyLib/refs/heads/main/Library.lua"))()
 ```
 
 Then, create a window:
@@ -56,7 +56,7 @@ local Window = Library:CreateWindow({
 
 ## Icon Information
 
-The Obsidian UI Library uses [Lucide](https://lucide.dev/) for Tab Icons and more.
+The Ghostyy UI Library uses [Lucide](https://lucide.dev/) for Tab Icons and more.
 
 ## Core Components
 
@@ -752,7 +752,7 @@ local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(
         FrameCounter = 0;
     end;
 
-    Library:SetWatermark(('Obsidian demo | %s fps | %s ms'):format(
+    Library:SetWatermark(('Ghostyy demo | %s fps | %s ms'):format(
         math.floor(FPS),
         math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
     ));
@@ -861,7 +861,7 @@ Library:SetDPIScale(150) -- 150% scaling
 
 ```lua
 -- Create a basic window with common elements
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
+local Library = loadstring(game:HttpGet(""))()
 
 local Window = Library:CreateWindow({
     Title = "My Script",
@@ -965,7 +965,7 @@ local MyColorPicker = ToggleWithKeybind:AddColorPicker("MyColorPicker", {
 ### Advanced Example with Tabboxes
 
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
+local Library = loadstring(game:HttpGet(""))()
 
 local Window = Library:CreateWindow({
     Title = "Advanced Example",
