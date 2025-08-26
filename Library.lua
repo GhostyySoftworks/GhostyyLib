@@ -84,7 +84,8 @@ local Library = {
         OutlineColor = Color3.fromRGB(15, 15, 15),
         FontColor = Color3.fromRGB(178, 34, 34),
         Font = Font.fromEnum(Enum.Font.Code),
-        Red = Color3.fromRGB(178, 34, 43),
+
+        Red = Color3.fromRGB(178, 34, 34),
         Dark = Color3.fromRGB(10, 10, 10),
         White = Color3.fromRGB(178, 34, 34),
     },
@@ -93,11 +94,11 @@ local Library = {
     DPIRegistry = {},
 }
 
-local ImageManager = {
+local GhostyyImageManager = {
     Assets = {
         TransparencyTexture = {
             RobloxId = 139785960036434,
-            Path = "/assets/TransparencyTexture.png",
+            Path = "Ghostyy/assets/TransparencyTexture.png",
 
             Id = nil
         },
@@ -112,7 +113,7 @@ local ImageManager = {
 }
 do
     local BaseURL = "https://raw.githubusercontent.com/GhostyySoftworks/GhostyyLib/refs/heads/main/"
-
+	
     local function RecursiveCreatePath(Path: string, IsFile: boolean?)
         if not isfolder or not makefolder then return end
 
@@ -134,12 +135,12 @@ do
         return TraversedPath
     end
 
-    function ImageManager.GetAsset(AssetName: string)
-        if not ImageManager.Assets[AssetName] then
+    function GhostyyImageManager.GetAsset(AssetName: string)
+        if not GhostyyImageManager.Assets[AssetName] then
             return nil
         end
 
-        local AssetData = ImageManager.Assets[AssetName]
+        local AssetData = GhostyyImageManager.Assets[AssetName]
         if AssetData.Id then
             return AssetData.Id
         end
@@ -158,7 +159,7 @@ do
         return AssetID
     end
 
-    function ImageManager.DownloadAsset(AssetPath: string)
+    function GhostyyImageManager.DownloadAsset(AssetPath: string)
         if not getcustomasset or not writefile or not isfile then
             return
         end
@@ -169,12 +170,12 @@ do
             return
         end
 
-        local URLPath = AssetPath:gsub("/", "")
+        local URLPath = AssetPath:gsub("Ghostyy/", "")
         writefile(AssetPath, game:HttpGet(`{BaseURL}{URLPath}`))
     end
 
-    for _, Data in ImageManager.Assets do
-        ImageManager.DownloadAsset(Data.Path)
+    for _, Data in GhostyyImageManager.Assets do
+        GhostyyImageManager.DownloadAsset(Data.Path)
     end
 end
 
@@ -1066,7 +1067,7 @@ local function ParentUI(UI: Instance, SkipHiddenUI: boolean?)
 end
 
 local ScreenGui = New("ScreenGui", {
-    Name = "",
+    Name = "Ghostyy",
     DisplayOrder = 999,
     ResetOnSpawn = false,
 })
@@ -2221,7 +2222,7 @@ do
         })
 
         local HolderTransparency = New("ImageLabel", {
-            Image = ImageManager.GetAsset("TransparencyTexture"),
+            Image = GhostyyImageManager.GetAsset("TransparencyTexture"),
             ImageTransparency = (1 - ColorPicker.Transparency),
             ScaleType = Enum.ScaleType.Tile,
             Size = UDim2.fromScale(1, 1),
@@ -2274,7 +2275,7 @@ do
         --// Sat Map
         local SatVipMap = New("ImageButton", {
             BackgroundColor3 = ColorPicker.Value,
-            Image = ImageManager.GetAsset("SaturationMap"),
+            Image = GhostyyImageManager.GetAsset("SaturationMap"),
             Size = UDim2.fromOffset(200, 200),
             Parent = ColorHolder,
         })
@@ -2320,7 +2321,7 @@ do
         local TransparencySelector, TransparencyColor, TransparencyCursor
         if Info.Transparency then
             TransparencySelector = New("ImageButton", {
-                Image = ImageManager.GetAsset("TransparencyTexture"),
+                Image = GhostyyImageManager.GetAsset("TransparencyTexture"),
                 ScaleType = Enum.ScaleType.Tile,
                 Size = UDim2.fromOffset(16, 200),
                 TileSize = UDim2.fromOffset(8, 8),
