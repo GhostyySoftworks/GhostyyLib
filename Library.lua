@@ -5236,9 +5236,7 @@ function Library:CreateWindow(WindowInfo)
         })
 
         MainFrame = New("Frame", {
-            BackgroundColor3 = function()
-                return Library:GetBetterColor(Library.Scheme.BackgroundColor, -1)
-            end,
+            BackgroundColor3 = "MainColor",
             Name = "Main",
             Position = WindowInfo.Position,
             Size = WindowInfo.Size,
@@ -5453,9 +5451,7 @@ function Library:CreateWindow(WindowInfo)
         --// Bottom Bar \\--
         local BottomBar = New("Frame", {
             AnchorPoint = Vector2.new(0, 1),
-            BackgroundColor3 = function()
-                return Library:GetBetterColor(Library.Scheme.BackgroundColor, 4)
-            end,
+            BackgroundColor3 = "BackgroundColor",
             Position = UDim2.fromScale(0, 1),
             Size = UDim2.new(1, 0, 0, 20),
             Parent = MainFrame,
@@ -5463,9 +5459,7 @@ function Library:CreateWindow(WindowInfo)
         do
             local Cover = Library:MakeCover(BottomBar, "Top")
             Library:AddToRegistry(Cover, {
-                BackgroundColor3 = function()
-                    return Library:GetBetterColor(Library.Scheme.BackgroundColor, 4)
-                end,
+                BackgroundColor3 = "BackgroundColor",
             })
         end
         New("UICorner", {
@@ -5531,9 +5525,7 @@ function Library:CreateWindow(WindowInfo)
         --// Container \\--
         Container = New("Frame", {
             AnchorPoint = Vector2.new(1, 0),
-            BackgroundColor3 = function()
-                return Library:GetBetterColor(Library.Scheme.BackgroundColor, 1)
-            end,
+            BackgroundColor3 = "BackgroundColor",
             Name = "Container",
             Position = UDim2.new(1, 0, 0, 49),
             Size = UDim2.new(0.7, -1, 1, -70),
