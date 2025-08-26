@@ -78,41 +78,40 @@ local Library = {
 
     IsLightTheme = false,
     Scheme = {
-        BackgroundColor = Color3.fromRGB(15, 15, 15),
-        MainColor = Color3.fromRGB(25, 25, 25),
-        AccentColor = Color3.fromRGB(125, 85, 255),
-        OutlineColor = Color3.fromRGB(40, 40, 40),
-        FontColor = Color3.new(1, 1, 1),
+        BackgroundColor = Color3.fromRGB(10, 10, 10),
+        MainColor = Color3.fromRGB(10, 10, 10),
+        AccentColor = Color3.fromRGB(178, 34, 34),
+        OutlineColor = Color3.fromRGB(15, 15, 15),
+        FontColor = Color3.fromRGB(178, 34, 34),
         Font = Font.fromEnum(Enum.Font.Code),
-
-        Red = Color3.fromRGB(255, 50, 50),
-        Dark = Color3.new(0, 0, 0),
-        White = Color3.new(1, 1, 1),
+        Red = Color3.fromRGB(178, 34, 43),
+        Dark = Color3.fromRGB(10, 10, 10),
+        White = Color3.fromRGB(178, 34, 34),
     },
 
     Registry = {},
     DPIRegistry = {},
 }
 
-local ObsidianImageManager = {
+local ImageManager = {
     Assets = {
         TransparencyTexture = {
             RobloxId = 139785960036434,
-            Path = "Obsidian/assets/TransparencyTexture.png",
+            Path = "/assets/TransparencyTexture.png",
 
             Id = nil
         },
         
         SaturationMap = {
             RobloxId = 4155801252,
-            Path = "Obsidian/assets/SaturationMap.png",
+            Path = "Ghostyy/assets/SaturationMap.png",
 
             Id = nil
         }
     }
 }
 do
-    local BaseURL = "https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/"
+    local BaseURL = "https://raw.githubusercontent.com/GhostyySoftworks/GhostyyLib/refs/heads/main/"
 
     local function RecursiveCreatePath(Path: string, IsFile: boolean?)
         if not isfolder or not makefolder then return end
@@ -135,12 +134,12 @@ do
         return TraversedPath
     end
 
-    function ObsidianImageManager.GetAsset(AssetName: string)
-        if not ObsidianImageManager.Assets[AssetName] then
+    function ImageManager.GetAsset(AssetName: string)
+        if not ImageManager.Assets[AssetName] then
             return nil
         end
 
-        local AssetData = ObsidianImageManager.Assets[AssetName]
+        local AssetData = ImageManager.Assets[AssetName]
         if AssetData.Id then
             return AssetData.Id
         end
@@ -159,7 +158,7 @@ do
         return AssetID
     end
 
-    function ObsidianImageManager.DownloadAsset(AssetPath: string)
+    function ImageManager.DownloadAsset(AssetPath: string)
         if not getcustomasset or not writefile or not isfile then
             return
         end
@@ -170,12 +169,12 @@ do
             return
         end
 
-        local URLPath = AssetPath:gsub("Obsidian/", "")
+        local URLPath = AssetPath:gsub("/", "")
         writefile(AssetPath, game:HttpGet(`{BaseURL}{URLPath}`))
     end
 
-    for _, Data in ObsidianImageManager.Assets do
-        ObsidianImageManager.DownloadAsset(Data.Path)
+    for _, Data in ImageManager.Assets do
+        ImageManager.DownloadAsset(Data.Path)
     end
 end
 
@@ -1067,7 +1066,7 @@ local function ParentUI(UI: Instance, SkipHiddenUI: boolean?)
 end
 
 local ScreenGui = New("ScreenGui", {
-    Name = "Obsidian",
+    Name = "",
     DisplayOrder = 999,
     ResetOnSpawn = false,
 })
@@ -2222,7 +2221,7 @@ do
         })
 
         local HolderTransparency = New("ImageLabel", {
-            Image = ObsidianImageManager.GetAsset("TransparencyTexture"),
+            Image = ImageManager.GetAsset("TransparencyTexture"),
             ImageTransparency = (1 - ColorPicker.Transparency),
             ScaleType = Enum.ScaleType.Tile,
             Size = UDim2.fromScale(1, 1),
@@ -2275,7 +2274,7 @@ do
         --// Sat Map
         local SatVipMap = New("ImageButton", {
             BackgroundColor3 = ColorPicker.Value,
-            Image = ObsidianImageManager.GetAsset("SaturationMap"),
+            Image = ImageManager.GetAsset("SaturationMap"),
             Size = UDim2.fromOffset(200, 200),
             Parent = ColorHolder,
         })
@@ -2321,7 +2320,7 @@ do
         local TransparencySelector, TransparencyColor, TransparencyCursor
         if Info.Transparency then
             TransparencySelector = New("ImageButton", {
-                Image = ObsidianImageManager.GetAsset("TransparencyTexture"),
+                Image = ImageManager.GetAsset("TransparencyTexture"),
                 ScaleType = Enum.ScaleType.Tile,
                 Size = UDim2.fromOffset(16, 200),
                 TileSize = UDim2.fromOffset(8, 8),
